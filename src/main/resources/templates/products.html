@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td img {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+        }
+
+        .add-to-cart-form {
+            display: inline-block;
+        }
+
+        .add-to-cart-button {
+            background-color: #E4BC18;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #E4BC18;
+        }
+
+        .cart-button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-button,
+        .orders-button {
+            background-color: #E4BC18;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .cart-button:hover,
+        .orders-button:hover {
+            background-color: #E4BC18;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f9f9f9;
+            padding: 10px;
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="logo-container">
+    <a href="/products">
+        <img src="/logo.jpg" alt="Logo" class="logo">
+    </a>
+</div>
+
+<div class="cart-button-container">
+    <a class="orders-button" href="/orders">Go to Orders</a>
+    <a class="cart-button" href="/carts">Go to Cart</a>
+</div>
+
+<table>
+    <tr th:each="product : ${products}">
+        <td><img th:src="@{${product.picture}}" alt="Product Image" /></td>
+        <td th:text="${product.name}">Name</td>
+        <td th:text="${product.description}">Description</td>
+        <td th:text="${product.price}">Price</td>
+        <td>
+            <form class="add-to-cart-form" th:action="@{/add-to-cart}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <button class="add-to-cart-button" type="submit">Add to Cart</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<footer>
+    PC-Parts
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #E4BC18;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #E4BC18;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f9f9f9;
+            padding: 10px;
+            text-align: center;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="logo-container">
+    <a href="/products">
+        <img src="/logo.jpg" alt="Logo" class="logo">
+    </a>
+</div>
+
+<h1>Enter Order ID</h1>
+<form action="/orders/details" method="post">
+    <input type="text" name="orderId" placeholder="Order ID" required>
+    <button type="submit">Check</button>
+</form>
+<footer>
+    PC-Parts
+</footer>
+</body>
+</html>
